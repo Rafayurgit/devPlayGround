@@ -1,4 +1,4 @@
-import Calculator from "../Projects/Calculator/index.jsx";
+import Calculator from "../Projects/Calculator/Calculator.jsx";
 
 const projectList = [
   {
