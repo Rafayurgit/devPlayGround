@@ -1,17 +1,22 @@
 import { useState } from "react";
 
 const Calculator = () => {
-  const [result, setResult] = useState("");
+  
+  const [result, setResult] =useState("");
+  const handleClick =(value) =>{
+    setResult((prevResult)=> prevResult+ value)
+  }
+  const handleClear =()=>{
+    setResult("")
+  }
 
-  const handleClick = (value) => setResult(result + value);
-  const handleClear = () => setResult("");
-  const handleCalculate = () => {
-    try {
-      setResult(eval(result).toString());
-    } catch {
-      setResult("Error");
+  const handleCalculate=()=>{
+    try{
+      setResult(eval(result).toString())
+    }catch(err){
+      setResult(err)
     }
-  };
+  }
 
   return (
     <div className="min-h-screen p-8 bg-gray-100 flex flex-col items-center">
