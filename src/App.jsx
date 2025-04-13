@@ -1,7 +1,9 @@
-import { useState, } from 'react'
+import React, { useState, } from 'react'
 import {BrowserRouter as Router , Routes, Route} from 'react-router-dom'
 import './App.css'
 import projectList from './DATA/projectList'
+import Home from './Pages/Home'
+
 
 
 function App() {
@@ -9,15 +11,14 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home/>}>
+        <Route path='/' element={<Home/>}/>
         {projectList.map((proj, idx)=>(
           <Route 
           key={idx}
           path={proj.path}
-          element={<proj.component/>}
+          element={React.createElement(proj.component) }
           />
         ))}
-        </Route>
       </Routes>
     </Router>
   )
