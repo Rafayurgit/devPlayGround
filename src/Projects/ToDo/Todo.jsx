@@ -10,13 +10,13 @@ const Todo = () => {
 
   // ✅ Function to add a todo item
   const handelAdd =(e)=>{
-    
 
     setTodoList((prev)=> [...prev, todo])
     setTodo("")
   }
 
   // ✅ Optional: Function to delete or toggle a todo item
+  
 
   return (
     <div className="min-h-screen p-8 bg-gray-100 flex flex-col items-center">
