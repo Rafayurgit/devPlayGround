@@ -10,9 +10,19 @@ const Todo = () => {
 
   // ✅ Function to add a todo item
   const handelAdd =(e)=>{
+    e.preventDefault();
 
     setTodoList((prev)=> [...prev, todo])
     setTodo("")
+  }
+
+  
+  const handelRemove=( index)=>{
+    return setTodoList((prev)=> prev.filter((prev, idx)=> idx!==index)  )
+
+    // setTodoList((prev)=>{
+    //   return prev.filter((item, idx)=> idx!==index)
+    // })
   }
 
   // ✅ Optional: Function to delete or toggle a todo item
@@ -41,10 +51,12 @@ const Todo = () => {
         })} */}
 
 
-        {todoList.map((todo)=> (
+        {todoList.map((todo, index)=> (
             <li>
                 {todo}
+                <button onClick={handelRemove(index)}>Remove</button>
             </li>
+            
         ))}
       </div>
     </div>
