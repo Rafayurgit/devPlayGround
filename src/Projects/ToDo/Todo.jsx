@@ -25,6 +25,13 @@ const Todo = () => {
     // })
   }
 
+  const handelUpdate =(todo, index)=>{
+    setTodoList((prevTodo)=>(
+      prevTodo.map((prev, idx)=> idx===index ? todo :prev)
+    ))
+   
+  }
+
   // ✅ Optional: Function to delete or toggle a todo item
   
 
@@ -55,6 +62,7 @@ const Todo = () => {
             <li>
                 {todo}
                 <button onClick={handelRemove(index)}>Remove</button>
+                <button onClick={handelUpdate(todo ,index)}>update</button>
             </li>
             
         ))}
