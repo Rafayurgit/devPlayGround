@@ -1,0 +1,115 @@
+.todo-container {
+  min-height: 100vh;
+  padding: 2rem;
+  background-color: #f3f4f6;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.todo-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+  }
+  
+
+.todo-box {
+    background-color: white;
+    padding: 1.5rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 320px; /* similar to w-80 */
+  }
+  
+
+  .todo-input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .todo-input {
+    flex: 1;
+    padding: 0.5rem;
+    border: 2px solid #d1d5db; /* light gray */
+    border-radius: 6px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  .todo-input:focus {
+    border-color: #2563eb; /* blue-600 */
+  }
+  
+  .add-button {
+    background-color: #3b82f6; /* blue-500 */
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-button:hover {
+    background-color: #2563eb; /* blue-600 */
+  }
+  
+  .todo-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .todo-item {
+    background-color: #f9fafb; /* light gray */
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.5rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 6px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .todo-text {
+    font-size: 1rem;
+    flex: 1;
+  }
+  
+  .todo-actions {
+    display: flex;
+    gap: 0.5rem;
+  }
+  
+  .remove-button,
+  .update-button {
+    padding: 0.4rem 0.7rem;
+    font-size: 0.875rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+  
+  .remove-button {
+    background-color: #ef4444; /* red-500 */
+    color: white;
+  }
+  
+  .remove-button:hover {
+    background-color: #dc2626; /* red-600 */
+  }
+  
+  .update-button {
+    background-color: #10b981; /* green-500 */
+    color: white;
+  }
+  
+  .update-button:hover {
+    background-color: #059669; /* green-600 */
+  }
+  
+
