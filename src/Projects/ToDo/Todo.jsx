@@ -17,6 +17,7 @@ const Todo = () => {
   const handelAdd =(e)=>{
     e.preventDefault();
     console.log("Add clicked");
+    if(!todo.trim()) return
     
 
     setTodoList((prev)=> [...prev, todo])
@@ -64,7 +65,23 @@ const Todo = () => {
       <div className="todo-box">
         {/* ✅ Input Field */}
         <div className="todo-input-group">
-        <input 
+          {todo ? (<>
+          
+            <input 
+            type="text" 
+            className="todo-input" 
+            onChange={(e)=> setTodo(e.target.value)}
+            value={todo}
+            />  
+            {/* ✅ Add Button */}
+            <button type="button" 
+            className= "add-button" 
+            onClick={handelAdd}
+            disabled={false}
+            >Add</button> </>
+          ): (
+            <>
+            <input 
         type="text" 
         className="todo-input" 
         onChange={(e)=> setTodo(e.target.value)}
@@ -73,8 +90,11 @@ const Todo = () => {
         {/* ✅ Add Button */}
         <button type="button" 
         className= "add-button" 
-        onClick={handelAdd}>
-        Add</button>
+        onClick={handelAdd}
+        disabled={!todo.trim()}
+        >Add</button></>
+          )}
+        
         
         </div>        
 
