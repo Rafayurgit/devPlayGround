@@ -8,6 +8,9 @@ const Todo = () => {
   // 🧠 useState for todo list
   const [todoList, setTodoList]= useState([]);
 
+  const [editIndex, seteditIndex]= useState("")
+  const [editText,  setEditText] =useState("")
+
   // ✅ Function to handle input change
 
   // ✅ Function to add a todo item
@@ -30,13 +33,32 @@ const Todo = () => {
   }
 
   const handelUpdate =(index, todo)=>{
-    setTodoList((prevTodo)=> prevTodo.map((prev, idx)=> idx === index ? todo: prev))
+    seteditIndex(index)
+    setEditText(todo)
+
+    
+  }
+
+ 
+
+  const handelSave =(index, todo)=>{
+    setTodoList((prevTodo)=> prevTodo.map((prev, idx)=> idx === index ? todo : prev))
+    seteditIndex("")
+    setEditText("")
+    
+  }
+
+  const handelCancel =()=>{
+    setEditText("")
+    seteditIndex("")
   }
 
   // ✅ Optional: Function to delete or toggle a todo item
-  
+
 
   return (
+    
+    
     <div className="todo-container">
       <h1 className="todo-title">📝 Todo App</h1>
       <div className="todo-box">
@@ -45,7 +67,7 @@ const Todo = () => {
         <input 
         type="text" 
         className="todo-input" 
-        onChange={(e)=> setTodo(e.target.value) }
+        onChange={(e)=> setTodo(e.target.value)}
         value={todo}
         />  
         {/* ✅ Add Button */}
@@ -54,21 +76,32 @@ const Todo = () => {
         onClick={handelAdd}>
         Add</button>
         
-        </div>
+        </div>        
 
 
         {/* ✅ Todo List display */}
         <ul className="todo-list">
         {todoList.map((todo, index)=> (
             <li key={index} className="todo-item" >
+              {editIndex===index ? (
+                <div>
+                  <span><input type="text" value={editText} onChange={(e)=>setEditText(e.target.value)}/></span>
+                  <div>
+                    <button onClick={()=>handelSave(index, editText)}>save</button>
+                    <button onClick={()=>handelCancel(index)}>cancel</button>
+                  </div>
+                </div>
+              )
+              : (
+              <>
                 <span className="todo-text">{todo}</span>
                 <div className="todo-actions">
                   <button className="remove-button" onClick={()=> handelRemove(index)}>Remove</button>
-                  <button className="update-button" onClick={()=>{
-                    const updated= prompt("Update todo :", todo)
-                    if(updated) handelUpdate(index, updated)
-                  }}>Update</button>
+                  <button className="update-button" onClick={()=> handelUpdate(index, todo)}>Update</button>
                 </div>
+                </>
+              )}
+                
             </li>
         ))}
         </ul>
