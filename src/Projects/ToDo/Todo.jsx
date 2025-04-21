@@ -6,7 +6,7 @@ const Todo = () => {
   // 🧠 useState for todo input
   const [todo, setTodo]= useState("")
   // 🧠 useState for todo list
-  const [todoList, setTodoList]= useState([]);
+  const [todoList, setTodoList]= useState([{}]);
 
   const [editIndex, seteditIndex]= useState("")
   const [editText,  setEditText] =useState("")
@@ -22,7 +22,7 @@ const Todo = () => {
     if(!todo.trim()) return
     
 
-    setTodoList((prev)=> [...prev, todo])
+    setTodoList((prev)=> [...prev, {text:todo, done:false}])
     setTodo("")
   }
 
@@ -52,6 +52,10 @@ const Todo = () => {
   const handelCancel =()=>{
     setEditText("")
     seteditIndex("")
+  }
+
+  const toggleDone=(index)=>{
+    setTodoList((prevTod)=> prevTod.map((prev, idx)=> idx===index ? {...prev , done: !prev.done }: prev))
   }
 
     useEffect (()=>{
@@ -127,10 +131,12 @@ const Todo = () => {
               )
               : (
               <>
-                <span className="todo-text">{todo}</span>
+                <span className={`todo-text ${todo.done ? "done" : " "}`}>{todo}</span>
                 <div className="todo-actions">
                   <button className="remove-button" onClick={()=> handelRemove(index)}>Remove</button>
                   <button className="update-button" onClick={()=> handelUpdate(index, todo)}>Update</button>
+                  <button className="update-button" onClick={()=> toggleDone(index)}>Done</button>
+
                 </div>
                 </>
               )}
