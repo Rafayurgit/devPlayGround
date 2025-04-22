@@ -6,7 +6,7 @@ const Todo = () => {
   // 🧠 useState for todo input
   const [todo, setTodo]= useState("")
   // 🧠 useState for todo list
-  const [todoList, setTodoList]= useState([{}]);
+  const [todoList, setTodoList]= useState([]);
 
   const [editIndex, seteditIndex]= useState("")
   const [editText,  setEditText] =useState("")
@@ -22,7 +22,7 @@ const Todo = () => {
     if(!todo.trim()) return
     
 
-    setTodoList((prev)=> [...prev, {text:todo, done:false}])
+    setTodoList((prev)=> [...prev, {text:todo.trim(), done:false}])
     setTodo("")
   }
 
@@ -39,11 +39,11 @@ const Todo = () => {
 
   const handelUpdate =(index, todo)=>{
     seteditIndex(index)
-    setEditText(todo)
+    setEditText(todo.text)
   }
 
   const handelSave =(index, todo)=>{
-    setTodoList((prevTodo)=> prevTodo.map((prev, idx)=> idx === index ? todo.trim() : prev))
+    setTodoList((prevTodo)=> prevTodo.map((prev, idx)=> idx === index ?{...prev, text: todo.trim() }: prev))
     seteditIndex("")
     setEditText("")
     
@@ -66,9 +66,10 @@ const Todo = () => {
 
     useEffect(()=>{
       const storedTodo= localStorage.getItem("todo-item")
-      if(!storedTodo) return
+      if(storedTodo) {
       setTodoList( JSON.parse(storedTodo))
-      setIsLoading(true)
+    }
+    setIsLoading(true)
     },[])
 
   
@@ -131,7 +132,7 @@ const Todo = () => {
               )
               : (
               <>
-                <span className={`todo-text ${todo.done ? "done" : " "}`}>{todo}</span>
+                <span className={`todo-text ${todo.done ? "done" : " "}`}>{todo.text}</span>
                 <div className="todo-actions">
                   <button className="remove-button" onClick={()=> handelRemove(index)}>Remove</button>
                   <button className="update-button" onClick={()=> handelUpdate(index, todo)}>Update</button>
