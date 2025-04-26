@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-
-
 const api_key= import.meta.env.VITE_API_KEY;
+// const api_key=08d8239330708069aad0252fe6570135;
 
-
+console.log("API KEY:", import.meta.env.VITE_API_KEY);
 
 export default function Weather(){
 
