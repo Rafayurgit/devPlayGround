@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 const api_key= import.meta.env.VITE_API_KEY;
-// const api_key=08d8239330708069aad0252fe6570135;
 
-console.log("API KEY:", import.meta.env.VITE_API_KEY);
 
 export default function Weather(){
 
     const [city, setCity] =useState("")
+    const [weatherData, setWeatherData]= useState({})
+
+    const temp= weatherData.main ? (weatherData.main.temp - 273.15).toFixed(1) : null;
 
     const handelSearch = async(city_name)=>{
         
         try {
             const response =await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city_name}&appid=${api_key}`)
             const data =await response.json();
+            setWeatherData(data);
             console.log(data);
             
 
@@ -38,6 +40,12 @@ export default function Weather(){
 
             <div>
                 <h3 className="  ">Result</h3>
+                {weatherData && 
+                <div className="weather-data text-2xl ">
+                    <h2 className="text-xl font-semibold">{weatherData.name}</h2>
+                    <p className="text-3xl">{temp}°C</p>
+                </div>}
+                
             </div>
         </div>
 
