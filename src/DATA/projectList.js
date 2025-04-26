@@ -1,5 +1,6 @@
 import Calculator from "../Projects/Calculator/Calculator.jsx";
 import Todo from "../Projects/ToDo/Todo.jsx";
+import Weather from "../Projects/WeatherApp/Weather.jsx";
 
 const projectList = [
   {
@@ -13,6 +14,12 @@ const projectList = [
     path:"/project/todo",
     component: Todo,
     description:"Simple todo list with add/remove functionality"
+  }, 
+  {
+    name:"WeatherApp",
+    path:"/project/weatherApp",
+    component: Weather,
+    description: "Check your city's weather"
   }
 ];
 
