@@ -3,12 +3,12 @@ import { useState } from "react"
 export default function Notes(){
 
 
-const [note, setNote]= useState("");
+const [note, setNote]= useState({title:"", content:""});
 const [noteList, setNoteList] = useState([]);
 
 const handelAdd=()=>{
     setNoteList((prev)=>[...prev, note])
-    setNote("")
+    setNote({title:"", content:""})
 
 }
 
@@ -18,7 +18,13 @@ const handelAdd=()=>{
         <>
         <div>
             <div>
-                <input type="text" value={note} onChange={(e)=>setNote(e.target.value)}/>
+                <input type="text"  placeholder="title"
+                value={note} onChange={(e)=>setNote({...note, title:e.target.value})}/>
+            </div>
+
+            <div>
+                <textarea placeholder="content"
+                onChange={(e)=>setNote({...note, content:e.target.value})}/>
             </div>
 
             <div>
