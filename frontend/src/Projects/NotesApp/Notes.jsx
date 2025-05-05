@@ -38,6 +38,10 @@ const handelTopics =()=>{
                 type="text"  placeholder="title"
                 value={note.title} 
                 onChange={(e)=>setNote({...note, title: e.target.value})}/>
+                <br />
+                <small className="text-red-700">
+                    {note.title.trim()==="" && "Title is required"}
+                </small>
             </div>
 
             <div>
@@ -45,6 +49,10 @@ const handelTopics =()=>{
                 placeholder="content"
                 value={note.content}
                 onChange={(e)=>setNote({...note, content: e.target.value})}/>
+                <br />
+                <small className="text-red-700">
+                    {note.content.trim()==="" && "Content is required"}
+                </small>
             </div>
 
             <div>
@@ -53,6 +61,10 @@ const handelTopics =()=>{
                 value={topicInput}
                 onChange={(e)=>setTopicInput(e.target.value)}
                 />
+                <br />
+                <small className="text-red-700">
+                    {topicInput.trim()==="" && topics.length===0 && "Topics are required"}
+                </small>
             </div>
 
         </div>
@@ -61,6 +73,7 @@ const handelTopics =()=>{
             
             <div className="p-3">
                 <button className=" px-3 py-1 rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-300 " type="button"
+                disabled={!note.title.trim() || !note.content.trim() || !topicInput.trim()}
                 onClick={handelAdd}>
                 Add Note</button>
             </div>
@@ -68,6 +81,7 @@ const handelTopics =()=>{
             <div className="p-3">
                 <button className="px-3 py-1 rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-300 " type="button"
                 onClick={handelTopics}
+                disabled={!topicInput.trim()}
                  >Add Topics</button>
             </div>
         </div>
