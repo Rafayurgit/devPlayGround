@@ -73,7 +73,7 @@ const handelTopics =()=>{
             
             <div className="p-3">
                 <button className=" px-3 py-1 rounded-lg bg-blue-500 cursor-pointer hover:bg-blue-300 " type="button"
-                disabled={!note.title.trim() || !note.content.trim() || !topicInput.trim()}
+                disabled={!note.title.trim() || !note.content.trim() || topics.length===0 }
                 onClick={handelAdd}>
                 Add Note</button>
             </div>
@@ -89,23 +89,21 @@ const handelTopics =()=>{
 
 
             <div>
-                <ul>{noteList.map((note, idx)=>(
-                    <li key={idx}>
-                        <strong> {note.title}</strong>: {note.content}
-                    </li>
-                ))}
-                </ul>
+                {noteList.map((note,idx)=>(
+                    <div key={idx}>
+                        <strong>{note.title}</strong>
+                        <p>{note.content}</p>
+                        {note.topics.length >0 && (
+                            <ul>
+                                {note.topics.map((topic, idx)=>(
+                                    <li key={idx}>{topic}</li>
+                                ))}
+                            </ul>
+                        )}
+                    </div>
+                ))}    
             </div>
 
-            <div>
-                <ul>
-                   {topics.map((topic, idx)=>(
-                    <li key={idx}>
-                        {topic}
-                    </li>
-                   ))} 
-                </ul>
-            </div>
         </div>
         </>
     )
