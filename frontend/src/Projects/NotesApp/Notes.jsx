@@ -35,7 +35,8 @@ const handelTopics =()=>{
     return(
         <>
         <div>
-            <button onClick={()=>setViewMode(!viewMode)}>Click to view agenda</button>
+            <button className="px-3 py-1 bg-blue-300 rounded-2xl cursor-pointer"
+            onClick={()=>setViewMode(!viewMode)}>Click to view agenda</button>
             {viewMode ? (
                 <>
                 <div>
