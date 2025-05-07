@@ -7,6 +7,7 @@ const [note, setNote]= useState({title: "", content: ""});
 const [topicInput, setTopicInput]= useState("");
 const [topics, setTopics] = useState([])
 const [noteList, setNoteList] = useState([]);
+const [viewMode, setViewMode] = useState(false);
 
 
 const handelAdd=()=>{
@@ -29,10 +30,15 @@ const handelTopics =()=>{
     
 }
 
+
+
     return(
         <>
         <div>
-            <div>
+            <button onClick={()=>setViewMode(!viewMode)}>Click to view agenda</button>
+            {viewMode ? (
+                <>
+                <div>
                 <div className="p-3">
                 <input className="border-2 p-3 rounded-r-2xl"
                 type="text"  placeholder="title"
@@ -85,24 +91,34 @@ const handelTopics =()=>{
                  >Add Topics</button>
             </div>
         </div>
-            
-
-
-            <div>
-                {noteList.map((note,idx)=>(
-                    <div key={idx}>
-                        <strong>{note.title}</strong>
-                        <p>{note.content}</p>
-                        {note.topics.length >0 && (
-                            <ul>
-                                {note.topics.map((topic, idx)=>(
-                                    <li key={idx}>{topic}</li>
-                                ))}
-                            </ul>
-                        )}
+        </>
+            ) : (
+                <>
+                {noteList.length === 0 ? (
+                    <div>
+                        No Notes Added Yet
                     </div>
-                ))}    
-            </div>
+                ):(
+        
+                    <div>
+                    {noteList.map((note,idx)=>(
+                        <div key={idx}>
+                            <strong>{note.title}</strong>
+                            <p>{note.content}</p>
+                            {note.topics.length >0 && (
+                                <ul>
+                                    {note.topics.map((topic, idx)=>(
+                                        <li key={idx}>{`[${topic}],`}</li>
+                                    ))}
+                                </ul>
+                            )}
+                        </div>
+                    ))}    
+                    </div>
+        
+                )}
+                </>
+            )}
 
         </div>
         </>
