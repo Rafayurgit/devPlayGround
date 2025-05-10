@@ -1,29 +1,31 @@
 import React, { useState } from "react";
 
+export default function Analytics() {
+  const [selectYear, setSelectYear] = useState("");
 
-export default function Analytics (){
+  const handelYearSelect = (e) => {
+    setSelectYear(e.target.value);
+  };
 
-    const [selectYear, setSelectYear] = useState("");
+  return (
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
+      <h1 className="text-3xl font-semibold text-indigo-600 mb-6">See your fav match analytics</h1>
 
-    const handelYearSelect =(e)=>{
-        setSelectYear(e.target.value)
-    }
+      <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-sm">
+        <h3 className="text-xl font-medium text-gray-700 mb-4">Select the year</h3>
+        <select
+          name="yearSelect"
+          id=""
+          onChange={handelYearSelect}
+          className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
+        >
+          <option value="">Select an option</option>
+          <option value="2016">2016</option>
+          <option value="2017">2017</option>
+        </select>
 
-    return(
-        <div>
-            <h1>See you fav match analytics</h1>
-
-
-            <div>
-                <select name="yearSelect" id=""  onChange={handelYearSelect}>
-                    <option value="">Select an option</option>
-                    <option value="2016">2016</option>
-                    <option value="2017">2017</option>
-                </select>
-
-                <p>Selected year: {selectYear}</p>
-                
-            </div>
-        </div>
-    )
+        <p className="mt-4 text-gray-700">Selected year: {selectYear}</p>
+      </div>
+    </div>
+  );
 }
