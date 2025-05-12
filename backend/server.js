@@ -14,10 +14,13 @@ app.get("/api/test", (req,res)=>{
     }
 })
 
+app.get("/", (req,res)=>{
+    res.send("Welcome to backend")
+})
 
 
 app.listen(PORT, ()=>{
-    console.log("Welcome to server");
+    console.log(`Server is running on ${PORT}`);
     
 })
 
