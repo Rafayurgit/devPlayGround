@@ -24,7 +24,7 @@ app.get("/api/top-cities", async(req,res)=>{
         const result = await getTopCities();
         res.status(200).json(result); 
     } catch (error) {
-        res.status(500),json({error: "failed to prcess csv", detail: error.message})
+        res.status(500).json({error: "failed to prcess csv", detail: error.message})
     }
     
 })

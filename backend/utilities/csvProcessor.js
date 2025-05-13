@@ -1,5 +1,13 @@
 import fs from "fs";
 import csvParser from "csv-parser";
+//import matchesGlob from "../data/matches.csv";
+import { fileURLToPath } from "url";
+import path, { dirname } from "path";
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirName = path.dirname(__filename);
+
+const matchesPath = path.join(__dirName, "../data/matches.csv")
 
 export const getTopCities  =()=>{
     return new Promise ((resolve, reject)=>{
@@ -8,9 +16,9 @@ export const getTopCities  =()=>{
         const data17={};
         const countObj={};
 
-        fs.createReadStream(matchesGlob.csv).pipe(csvParser())
+        fs.createReadStream(matchesPath).pipe(csvParser())
         .on("data", (data)=>{
-            if(data.TOSS_DECISION === "field" && data.SEASON === "2016 "){
+            if(data.TOSS_DECISION === "field" && data.SEASON === "2016"){
                 data16[data.CITY]= (data16[data.CITY] || 0)+1;
             }
             if(data.TOSS_DECISION === "field" && data.SEASON === "2017"){
@@ -33,7 +41,7 @@ export const getTopCities  =()=>{
 
             for(let i =0 ; i<sort16.length; i++){
                 countObj["2016"][i]= [sort16[i], data16[sort16[i]]]
-                countObj["2017"][i]= [sort17[i], data16[sort17[i]]]
+                countObj["2017"][i]= [sort17[i], data17[sort17[i]]]
             }
 
             resolve(countObj);
