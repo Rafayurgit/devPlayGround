@@ -1,6 +1,7 @@
 import express, { json } from "express";
 import cors from "cors";
 import { getTopCities } from "./utilities/csvProcessor.js";
+import { getFourNsix } from "./utilities/csvProcessor2.js";
 
 const app = express();
 const PORT= process.env.PORT || 8080;
@@ -25,8 +26,16 @@ app.get("/api/top-cities", async(req,res)=>{
         res.status(200).json(result); 
     } catch (error) {
         res.status(500).json({error: "failed to prcess csv", detail: error.message})
+    }  
+})
+
+app.get("/api/top-score", async(req,res)=>{
+    try {
+        const data = await getFourNsix();
+        res.send(200).json(data);
+    } catch (error) {
+        res.send(500).json({error:"failed to process csv", detail: error.message})
     }
-    
 })
 
 

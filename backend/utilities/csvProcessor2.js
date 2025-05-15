@@ -9,11 +9,8 @@ const __dirName= dirname(__filename);
 const matchesPath = path.join(__dirName, "../data/matches.csv");
 const deliveriesPath = path.join(__dirName, "../data/deliveries.csv");
 
-
-
-
-export const getFourNsiz =()=>{
-    return promises((resolve, reject)=>{
+export const getFourNsix =()=>{
+    return new promises((resolve, reject)=>{
 
         const matchSeasonMap={};
         const finalResult={};
@@ -27,8 +24,8 @@ export const getFourNsiz =()=>{
             fs.createReadStream(deliveriesPath)
             .pipe(csvParser())
             .on("data", (data)=>{
-                const matchId= data.MATCH.ID;
-                const season = matchSeasonMap.SEASON;
+                const matchId= data.MATCH_ID;
+                const season = matchSeasonMap[matchId];
                 const team = data.BATTING_TEAM;
 
                 if(!season) return;
