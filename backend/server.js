@@ -32,9 +32,12 @@ app.get("/api/top-cities", async(req,res)=>{
 app.get("/api/top-score", async(req,res)=>{
     try {
         const data = await getFourNsix();
-        res.send(200).json(data);
+        res.json(data);
     } catch (error) {
-        res.send(500).json({error:"failed to process csv", detail: error.message})
+        console.log(error);
+        if(!res.headersSent){
+            res.send(500).json({error:"failed to process csv", detail: error.message})
+        }
     }
 })
 

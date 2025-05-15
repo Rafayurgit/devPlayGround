@@ -10,7 +10,7 @@ const matchesPath = path.join(__dirName, "../data/matches.csv");
 const deliveriesPath = path.join(__dirName, "../data/deliveries.csv");
 
 export const getFourNsix =()=>{
-    return new promises((resolve, reject)=>{
+    return new Promise((resolve, reject)=>{
 
         const matchSeasonMap={};
         const finalResult={};
@@ -31,7 +31,7 @@ export const getFourNsix =()=>{
                 if(!season) return;
 
                 if(!finalResult[season]) finalResult[season]={};
-                if(finalResult[season][team]){
+                if(!finalResult[season][team]){
                     finalResult[season][team]={
                         count4:0,
                         count6:0,
