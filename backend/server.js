@@ -1,7 +1,8 @@
 import express, { json } from "express";
 import cors from "cors";
-import { getTopCities } from "./utilities/csvProcessor.js";
-import { getFourNsix } from "./utilities/csvProcessor2.js";
+import { getTopCities } from "./Projects/cricketAnalytics/utilities/csvProcessor.js";
+import { getFourNsix } from "./Projects/cricketAnalytics/utilities/csvProcessor2.js";
+import {cricketRoutes} from "./Projects/cricketAnalytics/route.js"
 
 const app = express();
 const PORT= process.env.PORT || 8080;
@@ -20,26 +21,8 @@ app.get("/", (req,res)=>{
     res.send("Welcome to backend")
 })
 
-app.get("/api/top-cities", async(req,res)=>{
-    try {
-        const result = await getTopCities();
-        res.status(200).json(result); 
-    } catch (error) {
-        res.status(500).json({error: "failed to prcess csv", detail: error.message})
-    }  
-})
+app.use("/api/cricket-analytics", cricketRoutes);
 
-app.get("/api/top-score", async(req,res)=>{
-    try {
-        const data = await getFourNsix();
-        res.json(data);
-    } catch (error) {
-        console.log(error);
-        if(!res.headersSent){
-            res.send(500).json({error:"failed to process csv", detail: error.message})
-        }
-    }
-})
 
 
 app.listen(PORT, ()=>{
