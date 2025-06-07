@@ -1,8 +1,6 @@
 import express, { json } from "express";
 import cors from "cors";
-import { getTopCities } from "./Projects/cricketAnalytics/utilities/csvProcessor.js";
-import { getFourNsix } from "./Projects/cricketAnalytics/utilities/csvProcessor2.js";
-import {cricketRoutes} from "./Projects/cricketAnalytics/route.js"
+import cricketRoutes from "./Projects/cricketAnalytics/route.js"
 
 const app = express();
 const PORT= process.env.PORT || 8080;

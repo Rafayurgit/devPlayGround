@@ -1,5 +1,6 @@
-import { getTopCities } from "./utilities/csvProcessor";
-import { getFourNsix } from "./utilities/csvProcessor2";
+import { getFourNsix } from "./utilities/csvProcessor2.js"
+import {getTopCities} from "./utilities/csvProcessor.js"
+
 
 export const handelTopCities = async (req, res)=>{
     try {

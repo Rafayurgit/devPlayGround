@@ -1,5 +1,5 @@
 import express from "express";
-import { handelTopCities, handleTopScore } from "./controller";
+import { handelTopCities, handleTopScore } from "./controller.js";
 
 const router= express.Router();
 
