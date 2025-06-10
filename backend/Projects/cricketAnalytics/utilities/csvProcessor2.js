@@ -6,8 +6,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirName= dirname(__filename);
 
-//const matchesPath = path.join(__dirName, "../data/matches.csv");
-const deliveriesPath = path.join(__dirName, "../../data/deliveries.csv");
+const matchesPath = path.join(__dirName, "../../../data/matches.csv");
+const deliveriesPath = path.join(__dirName, "../../../data/deliveries.csv");
 
 export const getFourNsix =()=>{
     return new Promise((resolve, reject)=>{
@@ -18,7 +18,7 @@ export const getFourNsix =()=>{
         fs.createReadStream(matchesPath)
         .pipe(csvParser())
         .on("data", (data)=>{
-            matchSeasonMap[data.ID]=data.SEASON;
+            matchSeasonMap[data.MATCH_ID]=data.SEASON;
         })
         .on("end", ()=>{
             fs.createReadStream(deliveriesPath)
@@ -40,10 +40,10 @@ export const getFourNsix =()=>{
                     }
                 }
 
-                if(data.BATTING_RUNS ==="4"){
+                if(data.BATSMAN_RUNS ==="4"){
                     finalResult[season][team].count4 += 1;
                 }
-                if(data.BATTING_RUNS ==="6"){
+                if(data.BATSMAN_RUNS ==="6"){
                     finalResult[season][team].count6 += 1;
                 }
 
