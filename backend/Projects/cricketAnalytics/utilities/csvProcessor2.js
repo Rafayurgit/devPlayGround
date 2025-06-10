@@ -6,8 +6,8 @@ import { fileURLToPath } from "url";
 const __filename = fileURLToPath(import.meta.url);
 const __dirName= dirname(__filename);
 
-const matchesPath = path.join(__dirName, "../data/matches.csv");
-const deliveriesPath = path.join(__dirName, "../data/deliveries.csv");
+//const matchesPath = path.join(__dirName, "../data/matches.csv");
+const deliveriesPath = path.join(__dirName, "../../data/deliveries.csv");
 
 export const getFourNsix =()=>{
     return new Promise((resolve, reject)=>{

@@ -5,9 +5,12 @@ import { fileURLToPath } from "url";
 import path, { dirname } from "path";
 
 const __filename = fileURLToPath(import.meta.url);
-const __dirName = path.dirname(__filename);
+const __dirName= dirname(__filename);
 
-const matchesPath = path.join(__dirName, "../data/matches.csv")
+//const matchesPath = path.join(__dirName, "../data/matches.csv")
+const matchesPath = path.join(__dirName, "../../../data/matches.csv");
+
+//const matchesPath = path.join(__dirName, "../data/matches.csv")
 
 export const getTopCities  =()=>{
     return new Promise ((resolve, reject)=>{
