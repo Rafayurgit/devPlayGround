@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 
 export default function Analytics() {
   const [selectYear, setSelectYear] = useState("");
+  const [cityData, setCityData] = useState([]);
+  const [topScore, setTopScore] = useState([]);
 
   const handelYearSelect = (e) => {
     setSelectYear(e.target.value);
@@ -11,12 +13,15 @@ export default function Analytics() {
   
   fetch("http://localhost:8080/api/cricket-analytics/top-cities")
     .then(res=> res.json())
-    .then(data=> console.log("Data from backend", data))
+    .then(data=>{ console.log("Data from backend", data); 
+    setCityData(Object.values(data["2016"]))})
     .catch(err=> console.log("Backend Error", err));
+    
 
   fetch("http://localhost:8080/api/cricket-analytics/top-score")
     .then(res=>res.json())
-    .then(data=> console.log("Data from Backend", data))
+    .then(data=> {console.log("Data from Backend", data)
+      setTopScore(Object.entries(data["2008"]))})
     .catch(err=> console.log("Error from backend", err))
 
   },[])
@@ -50,7 +55,19 @@ export default function Analytics() {
         </select>
 
         <p className="mt-4 text-gray-700"> Selected year: {selectYear}</p>
-        <p></p>
+        <h2>TOP CITIES</h2>
+        <ul>
+          {cityData.map((cities, idx)=>(
+            <li key={idx}>{cities}</li>
+          ))}
+        </ul>
+
+        <h2>TOP SCORE</h2>
+        <ul>
+          {topScore.map(([teamname, status], idx)=>(
+            <li key={idx}>{teamname}</li>
+          ))}
+        </ul>
       </div>
     </div>
   );
