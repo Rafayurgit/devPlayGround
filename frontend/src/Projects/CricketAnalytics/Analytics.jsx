@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 export default function Analytics() {
   const [selectYear, setSelectYear] = useState("");
+  const [selectOption, setSelectOption]= useState("");
   const [cityData, setCityData] = useState([]);
   const [topScore, setTopScore] = useState([]);
 
@@ -9,22 +10,27 @@ export default function Analytics() {
     setSelectYear(e.target.value);
   };
 
+
+  const handelSelectOption=(e)=>{
+    setSelectOption(e.target.value)
+  }
+
   useEffect(()=>{
   
   fetch("http://localhost:8080/api/cricket-analytics/top-cities")
     .then(res=> res.json())
     .then(data=>{ console.log("Data from backend", data); 
-    setCityData(Object.values(data["2016"]))})
+    setCityData(Object.values(data[selectYear]))})
     .catch(err=> console.log("Backend Error", err));
     
 
   fetch("http://localhost:8080/api/cricket-analytics/top-score")
     .then(res=>res.json())
     .then(data=> {console.log("Data from Backend", data)
-      setTopScore(Object.entries(data["2008"]))})
+      setTopScore(Object.entries(data[selectYear]))})
     .catch(err=> console.log("Error from backend", err))
 
-  },[])
+  },[selectYear, selectOption])
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
@@ -36,6 +42,7 @@ export default function Analytics() {
           name="yearSelect"
           id=""
           onChange={handelYearSelect}
+          value={selectYear}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">Select an option</option>
@@ -46,12 +53,13 @@ export default function Analytics() {
         <select
           name="yearSelect"
           id=""
-          onChange={handelYearSelect}
+          onChange={handelSelectOption}
+          value={selectOption}
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">Select an option</option>
-          <option value="2016">Top-Cities</option>
-          <option value="2017">Top-Score</option>
+          <option value="Top-Cities">Top-Cities</option>
+          <option value="Top-Score">Top-Score</option>
         </select>
 
         <p className="mt-4 text-gray-700"> Selected year: {selectYear}</p>
