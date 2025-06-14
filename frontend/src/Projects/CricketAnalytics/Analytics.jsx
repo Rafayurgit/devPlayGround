@@ -5,6 +5,7 @@ export default function Analytics() {
   const [selectOption, setSelectOption]= useState("");
   const [cityData, setCityData] = useState([]);
   const [topScore, setTopScore] = useState([]);
+  const [showResult, setShowResult]= useState(false);
 
   const handelYearSelect = (e) => {
     setSelectYear(e.target.value);
@@ -13,6 +14,10 @@ export default function Analytics() {
 
   const handelSelectOption=(e)=>{
     setSelectOption(e.target.value)
+  }
+
+  const handelShowResult =()=>{
+    setShowResult(!showResult);
   }
 
   useEffect(()=>{
@@ -62,19 +67,28 @@ export default function Analytics() {
           <option value="Top-Score">Top-Score</option>
         </select>
 
+        <div>
+          <button className="m-3 px-4 py-2 rounded text-white bg-blue-700 cursor-pointer hover:bg-blue-300 transition duration-200"
+           onClick={handelShowResult}>Show result</button>
+        </div>
+
         <p className="mt-4 text-gray-700"> Selected year: {selectYear}</p>
         <h2>TOP CITIES</h2>
         <ul>
-          {cityData.map((cities, idx)=>(
+          {showResult === true ? (
+            cityData.map((cities, idx)=>(
             <li key={idx}>{cities}</li>
-          ))}
+          ))
+          ) : ( <p>NO data</p> ) }
         </ul>
 
         <h2>TOP SCORE</h2>
         <ul>
-          {topScore.map(([teamname, status], idx)=>(
+          {showResult === true ? (
+            topScore.map(([teamname, status], idx)=>(
             <li key={idx}>{teamname}</li>
-          ))}
+          ))
+          ): ( <p>No Data</p> )}
         </ul>
       </div>
     </div>
