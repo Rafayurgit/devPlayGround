@@ -86,23 +86,20 @@ export default function Analytics() {
         
         {showResult === true && selectOption==="top-cities" ?  (
             <>
-            <h5>TOP CITIES</h5>
+            <h5 className="font-bold">TOP CITIES</h5>
             <ul>
             {cityData.map((cities, idx)=>(
               <li key={idx}>{cities}</li>
               ))}
           </ul>
           </>
-          ) : ( null ) }
+          ) : ( <p className="p-3">No data for cities</p> ) }
           
-        
-
-        
         
         {showResult === true && selectOption ==="top-score" ? (
           <>
           <ul>
-            <h3>TOP SCORE</h3>
+            <h3 className="font-bold">TOP SCORE</h3>
 
             {topScore.map(([teamName, status], idx)=>(
               <li key={idx}>
@@ -111,7 +108,7 @@ export default function Analytics() {
             ))}
           </ul>
           </>
-        ): (null)}
+        ): ( <p className="p-3">No data for score</p> )}
         
       </div>
     </div>
