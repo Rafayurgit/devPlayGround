@@ -69,7 +69,9 @@ export default function Analytics() {
 
         <div>
           <button className="m-3 px-4 py-2 rounded text-white bg-blue-700 cursor-pointer hover:bg-blue-300 transition duration-200"
-           onClick={handelShowResult}>Show result</button>
+           onClick={handelShowResult} disabled ={ selectOption === "" || selectYear ==="" ? true: false}>
+            Show result
+          </button>
         </div>
 
         <p className="mt-4 text-gray-700"> Selected year: {selectYear}</p>
