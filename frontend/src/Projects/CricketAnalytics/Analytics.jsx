@@ -17,25 +17,32 @@ export default function Analytics() {
   }
 
   const handelShowResult =()=>{
-    setShowResult(!showResult);
+    
+    if(!selectYear || !selectOption) return;
+
+      if(selectOption === "top-cities" ){
+        fetch("http://localhost:8080/api/cricket-analytics/top-cities")
+      .then(res=> res.json())
+      .then(data=>{ console.log("Data from backend", data); 
+      setCityData(Object.values(data[selectYear])); setShowResult(true);})
+      
+      .catch(err=> console.log("Backend Error", err));
+      }
+
+      if(selectOption === "top-score"){
+        fetch("http://localhost:8080/api/cricket-analytics/top-score")
+      .then(res=>res.json())
+      .then(data=> {console.log("Data from Backend", data)
+        setTopScore(Object.entries(data[selectYear])); setShowResult(true);})
+        
+      .catch(err=> console.log("Error from backend", err))
+      }
+
   }
 
-  useEffect(()=>{
   
-  fetch("http://localhost:8080/api/cricket-analytics/top-cities")
-    .then(res=> res.json())
-    .then(data=>{ console.log("Data from backend", data); 
-    setCityData(Object.values(data[selectYear]))})
-    .catch(err=> console.log("Backend Error", err));
-    
-
-  fetch("http://localhost:8080/api/cricket-analytics/top-score")
-    .then(res=>res.json())
-    .then(data=> {console.log("Data from Backend", data)
-      setTopScore(Object.entries(data[selectYear]))})
-    .catch(err=> console.log("Error from backend", err))
-
-  },[selectYear, selectOption])
+  
+  
 
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 p-6">
@@ -63,8 +70,8 @@ export default function Analytics() {
           className="w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500"
         >
           <option value="">Select an option</option>
-          <option value="Top-Cities">Top-Cities</option>
-          <option value="Top-Score">Top-Score</option>
+          <option value="top-cities">Top-Cities</option>
+          <option value="top-score">Top-Score</option>
         </select>
 
         <div>
@@ -75,23 +82,37 @@ export default function Analytics() {
         </div>
 
         <p className="mt-4 text-gray-700"> Selected year: {selectYear}</p>
-        <h2>TOP CITIES</h2>
-        <ul>
-          {showResult === true ? (
-            cityData.map((cities, idx)=>(
-            <li key={idx}>{cities}</li>
-          ))
-          ) : ( <p>NO data</p> ) }
-        </ul>
+        
+        
+        {showResult === true && selectOption==="top-cities" ?  (
+            <>
+            <h5>TOP CITIES</h5>
+            <ul>
+            {cityData.map((cities, idx)=>(
+              <li key={idx}>{cities}</li>
+              ))}
+          </ul>
+          </>
+          ) : ( null ) }
+          
+        
 
-        <h2>TOP SCORE</h2>
-        <ul>
-          {showResult === true ? (
-            topScore.map(([teamname, status], idx)=>(
-            <li key={idx}>{teamname}</li>
-          ))
-          ): ( <p>No Data</p> )}
-        </ul>
+        
+        
+        {showResult === true && selectOption ==="top-score" ? (
+          <>
+          <ul>
+            <h3>TOP SCORE</h3>
+
+            {topScore.map(([teamName, status], idx)=>(
+              <li key={idx}>
+                {teamName}
+              </li>
+            ))}
+          </ul>
+          </>
+        ): (null)}
+        
       </div>
     </div>
   );
