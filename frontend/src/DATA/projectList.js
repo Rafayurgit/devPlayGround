@@ -3,6 +3,7 @@ import Notes from "../Projects/NotesApp/Notes.jsx";
 import Todo from "../Projects/ToDo/Todo.jsx";
 import Weather from "../Projects/WeatherApp/Weather.jsx";
 import Analytics from "../Projects/CricketAnalytics/Analytics.jsx";
+import PollMasterIndex from "../Projects/PollMaster/PollMasterIndex.jsx";
 
 const projectList = [
   {
@@ -34,6 +35,12 @@ const projectList = [
     path:"/project/analytics",
     component: Analytics,
     description:"Check the status of your fav match"
+  },
+  {
+    name: "Poll Master",
+    path: "/project/pollmaster/*",
+    component: PollMasterIndex,
+    description: "Create, vote and view polls"
   }
 ];
 

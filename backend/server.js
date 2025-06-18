@@ -19,6 +19,7 @@ app.get("/", (req,res)=>{
     res.send("Welcome to backend")
 })
 
+
 app.use("/api/cricket-analytics", cricketRoutes);
 
 
