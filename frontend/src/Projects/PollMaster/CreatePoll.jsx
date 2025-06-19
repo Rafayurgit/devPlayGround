@@ -1,51 +1,81 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 function CreatePoll() {
-  return (
-    <form className="max-w-md mx-auto p-6 mt-10 bg-slate-800 rounded-lg shadow-lg text-white space-y-6">
-      <h1 className="text-2xl font-bold text-center">Create Poll</h1>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">Question</label>
+  const [questionInput, setQuestionInput]= useState("");
+
+  const[optionsInput, setOptionsInput]= useState(["","","",""]);
+
+  const handelChange=()=>{
+
+  }
+
+
+
+  const handelSubmit= (e)=>{
+    e.preventDefault();
+    console.log(optionsInput);
+    console.log(questionInput);
+
+    const optionValid = optionsInput.some((opt, idx)=> opt.trim()==="");
+
+    if(!questionInput.trim() || optionValid){
+      alert("Write a question and fill the options");
+      return;
+    }
+
+    setQuestionInput("")
+    setOptionsInput(["","","",""])
+  }
+
+  return (
+    <form className="max-w-md mx-auto mt-10 p-6 bg-slate-800 text-white rounded space-y-4">
+      <h1 className="text-xl font-semibold">Create Poll</h1>
+
+      <div className="space-y-1">
+        <label>Question</label>
         <input
           type="text"
           placeholder="Enter your question"
-          className="w-full px-4 py-2 rounded-md bg-slate-700 text-white placeholder-gray-400 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+          className="input-style"
+          value={questionInput}
+          onChange={(e)=>setQuestionInput(e.target.value)}
         />
       </div>
 
-      <div>
-        <label className="block text-sm font-medium mb-1">Options</label>
-        <div className="space-y-3">
-          <input
-            type="text"
-            placeholder="Option 1"
-            className="w-full px-4 py-2 rounded-md bg-slate-700 text-white placeholder-gray-400 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            type="text"
-            placeholder="Option 2"
-            className="w-full px-4 py-2 rounded-md bg-slate-700 text-white placeholder-gray-400 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            type="text"
-            placeholder="Option 3"
-            className="w-full px-4 py-2 rounded-md bg-slate-700 text-white placeholder-gray-400 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-          <input
-            type="text"
-            placeholder="Option 4"
-            className="w-full px-4 py-2 rounded-md bg-slate-700 text-white placeholder-gray-400 border border-slate-600 focus:outline-none focus:ring-2 focus:ring-indigo-500"
-          />
-        </div>
-      </div>
+      <div className="space-y-1">
+        <label>Options</label>
+        <input type="text" className="input-style" placeholder="Option 1" value={optionsInput[0] || ""} 
+        onChange={(e)=> {
+          const updateOption = [...optionsInput]
+          updateOption[0]= e.target.value;
+          setOptionsInput(updateOption);
+        }
+        }/>
+        <input type="text" className="input-style" placeholder="Option 2" value={optionsInput[1] || ""} 
+        onChange={(e)=>{
+          const updateOption =[...optionsInput]
+          updateOption[1]=e.target.value;
+          setOptionsInput(updateOption)
 
-      <button
-        type="submit"
-        className="w-full py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold rounded-md transition duration-200"
-      >
-        Create Poll
-      </button>
+        }
+        }/>
+        <input type="text" className="input-style" placeholder="Option 3" value={optionsInput[2] || ""} 
+        onChange={ (e)=>{
+          const updateOption= [...optionsInput]
+          updateOption[2]=e.target.value;
+          setOptionsInput(updateOption);
+        }
+        }/>
+        <input type="text" className="input-style" placeholder="Option 4" value={optionsInput[3] || ""} 
+        onChange={(e)=>{
+          const updateOption= [...optionsInput]
+          updateOption[3]=e.target.value;
+          setOptionsInput(updateOption);
+        }}/>
+
+        <button className='px-5 py-2 rounded cursor-pointer bg-blue-700' onClick={handelSubmit}>Submit</button>
+      </div>
     </form>
   );
 }
