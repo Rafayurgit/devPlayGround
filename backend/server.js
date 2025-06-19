@@ -1,11 +1,14 @@
 import express, { json } from "express";
 import cors from "cors";
 import cricketRoutes from "./Projects/cricketAnalytics/route.js"
+import connectDB from "./Database/db/db.js";
+
 
 const app = express();
 const PORT= process.env.PORT || 8080;
 
 app.use(cors())
+connectDB();
 
 app.get("/api/test", (req,res)=>{
     try {
