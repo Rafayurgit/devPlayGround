@@ -1,7 +1,10 @@
 import express from "express";
-import pollsSchema from "../../Database/Models/pollsSchema";
+import pollsSchema from "../../Database/Models/pollsSchema.js";
+import { useState } from "react";
 
 const router= express.Router();
+
+
 
 router.put("/polls/create", async(req,res)=>{
     try {

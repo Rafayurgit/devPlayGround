@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import axios from "axios";
 
 function CreatePoll() {
 
@@ -6,26 +7,51 @@ function CreatePoll() {
 
   const[optionsInput, setOptionsInput]= useState(["","","",""]);
 
-  const handelChange=()=>{
-
+  const handelChange=(idx, value)=>{
+    const updateOptions = [...optionsInput];
+    updateOptions[idx]=value;
+    setOptionsInput(updateOptions)
   }
 
 
 
-  const handelSubmit= (e)=>{
+  const handelSubmit= async(e)=>{
+
     e.preventDefault();
     console.log(optionsInput);
     console.log(questionInput);
 
-    const optionValid = optionsInput.some((opt, idx)=> opt.trim()==="");
+    // const optionValid = optionsInput.some((opt, idx)=> opt.trim()==="");
+
+
+
+    const optionValid= optionsInput.some((opt)=> opt.trim()==="");
 
     if(!questionInput.trim() || optionValid){
       alert("Write a question and fill the options");
       return;
     }
 
-    setQuestionInput("")
-    setOptionsInput(["","","",""])
+
+    try {
+      const respone = await axios.put("http://localhost:8080/api/poll-master/polls/create", {
+        question: questionInput,
+        option1: optionsInput[0],
+        option2: optionsInput[1],
+        option3: optionsInput[2],
+        option4: optionsInput[3]
+      })
+
+
+      alert(respone.data.message || "Successfully created poll")
+
+      setQuestionInput("")
+      setOptionsInput(["","","",""])
+      
+    } catch (error) {
+      alert(error || error.message)
+    }
+
   }
 
   return (
@@ -47,35 +73,25 @@ function CreatePoll() {
         <label>Options</label>
         <input type="text" className="input-style" placeholder="Option 1" value={optionsInput[0] || ""} 
         onChange={(e)=> {
-          const updateOption = [...optionsInput]
-          updateOption[0]= e.target.value;
-          setOptionsInput(updateOption);
+          handelChange(0, e.target.value)
         }
         }/>
         <input type="text" className="input-style" placeholder="Option 2" value={optionsInput[1] || ""} 
         onChange={(e)=>{
-          const updateOption =[...optionsInput]
-          updateOption[1]=e.target.value;
-          setOptionsInput(updateOption)
-
+          handelChange(1,e.target.value)
         }
         }/>
         <input type="text" className="input-style" placeholder="Option 3" value={optionsInput[2] || ""} 
         onChange={ (e)=>{
-          const updateOption= [...optionsInput]
-          updateOption[2]=e.target.value;
-          setOptionsInput(updateOption);
+          handelChange(2, e.target.value);
         }
         }/>
         <input type="text" className="input-style" placeholder="Option 4" value={optionsInput[3] || ""} 
-        onChange={(e)=>{
-          const updateOption= [...optionsInput]
-          updateOption[3]=e.target.value;
-          setOptionsInput(updateOption);
-        }}/>
+        onChange={(e)=>handelChange(3, e.target.value)}/>
 
-        <button className='px-5 py-2 rounded cursor-pointer bg-blue-700' onClick={handelSubmit}>Submit</button>
       </div>
+              <button className='px-5 py-2 rounded cursor-pointer bg-blue-700' onClick={handelSubmit}>Submit</button>
+
     </form>
   );
 }
