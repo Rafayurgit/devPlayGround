@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from "axios";
+import { Link } from 'react-router-dom';
 
 function CreatePoll() {
 
@@ -90,8 +91,12 @@ function CreatePoll() {
         onChange={(e)=>handelChange(3, e.target.value)}/>
 
       </div>
-              <button className='px-5 py-2 rounded cursor-pointer bg-blue-700' onClick={handelSubmit}>Submit</button>
-
+              <button className='px-5 py-2 rounded cursor-pointer mr-3 bg-blue-700' onClick={handelSubmit}>Submit</button>
+              <Link
+                to="/project/pollmaster/registerPoll"
+                className=" px-5 py-2 bg-green-600 rounded hover:bg-green-700 transition">
+                Vote
+              </Link>
     </form>
   );
 }

@@ -1,6 +1,5 @@
 import express from "express";
 import pollsSchema from "../../Database/Models/pollsSchema.js";
-import { useState } from "react";
 
 const router= express.Router();
 
@@ -44,24 +43,37 @@ router.get("/polls/fetch", async(req,res)=>{
 
 router.patch("/polls/updateVotes", async(req,res)=>{
     try {
-        const  selectedOptions = req.body;
-        const validOptions =[option1,oprion2,option3,option4];
-        if(!validOptions.includes(selectedOptions)){
-            return res.status(200).json({message:"Invalid option selected"})
-        }
-
-        const voteCount= pollsSchema.findOne();
+        const  {selectedOption} = req.body;
+        const voteCount= await pollsSchema.findOne();
         if(!voteCount) return res.status(400).json({error: "Poll not found"})
+        
+        const {option1,option2,option3,option4}=voteCount;
+        
+        // const validOptions =[option1,option2,option3,option4];
+        // if(!validOptions.includes(selectedOption)){
+        //     return res.status(200).json({message:"Invalid option selected"})
+        // }
 
-        const voteField= `${selectedOptions}votes`;
+        // const voteField= `${selectedOption}votes`;
+
+        let voteField = "";
+
+    if (selectedOption === option1) voteField = "option1Votes";
+    else if (selectedOption === option2) voteField = "option2Votes";
+    else if (selectedOption === option3) voteField = "option3Votes";
+    else if (selectedOption === option4) voteField = "option4Votes";
+    else return res.status(400).json({ message: "Invalid option selected" });
+
+    voteCount[voteField] += 1;
+    
         voteCount[voteField]+=1;
 
-        const totalVotes = voteCount.option1+ voteCount.option2+ voteCount.option3+ voteCount.option4;
+        const totalVotes = voteCount.option1Votes+ voteCount.option2Votes+ voteCount.option3Votes+ voteCount.option4Votes;
 
-        voteCount.option1Percentage= Number(((poll.option1vote/totalVotes)*100).toFixed(2))
-        voteCount.option2Percentage= Number(((poll.option2vote/totalVotes)*100).toFixed(2))
-        voteCount.option3Percentage= Number(((poll.option3vote/totalVotes)*100).toFixed(2))
-        voteCount.option4Percentage= Number(((poll.option4vote/totalVotes)*100).toFixed(2))
+        voteCount.option1Percentage= Number(((voteCount.option1Votes/totalVotes)*100).toFixed(2))
+        voteCount.option2Percentage= Number(((voteCount.option2Votes/totalVotes)*100).toFixed(2))
+        voteCount.option3Percentage= Number(((voteCount.option3Votes/totalVotes)*100).toFixed(2))
+        voteCount.option4Percentage= Number(((voteCount.option4Votes/totalVotes)*100).toFixed(2))
 
         await voteCount.save();
 

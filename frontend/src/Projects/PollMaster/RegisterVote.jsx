@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { data } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 function RegisterVote() {
 
@@ -64,6 +65,10 @@ function RegisterVote() {
         </div>
 
       </div>
+
+      <Link to="/project/pollmaster/viewResult" className='px-5 py-2 bg-green-600 rounded hover:bg-green-700 transition' disable={questionVal.trim()==="" ?true: false}>
+        See Result
+      </Link>
     </div>
   );
 }
