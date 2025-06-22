@@ -56,7 +56,8 @@ function CreatePoll() {
   }
 
   return (
-    <form className="max-w-md mx-auto mt-10 p-6 bg-slate-800 text-white rounded space-y-4">
+    <div className=''>
+      <form className=" max-w-md mx-auto mt-5 p-10 bg-slate-800 text-white rounded space-y-4">
       <h1 className="text-xl font-semibold">Create Poll</h1>
 
       <div className="space-y-1">
@@ -98,6 +99,8 @@ function CreatePoll() {
                 Vote
               </Link>
     </form>
+    </div>
+    
   );
 }
 

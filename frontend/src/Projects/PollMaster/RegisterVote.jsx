@@ -42,7 +42,7 @@ function RegisterVote() {
         selectedOption : e
       })
 
-      alert(response.data || "Successfully patch request")
+      alert(response.data.message || "Successfully patch request")
     } catch (error) {
       alert(error || error.message)
     }
