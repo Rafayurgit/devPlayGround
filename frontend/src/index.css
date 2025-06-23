@@ -1,4 +1,14 @@
 @import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Merriweather+Sans:wght@400;600&display=swap');
+
+.font-mont {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.font-merri {
+  font-family: 'Merriweather Sans', sans-serif;
+}
+
 
 /* 
 @import "tailwindcss/preflight";
