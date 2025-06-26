@@ -16,9 +16,31 @@ const Home = () => {
       <h3 className="text-white font-merri">I am just a guy who is designer and developer for fun.</h3>
     </div>
 
+    {/* <div className="fixed z-50 bottom-6 right-20">
+      <button className=" w-12 aspect-square rounded-full p-2 cursor-pointer hover:scale-115">
+        <img src="../../public/logos/RafayLogo.PNG" alt="Logo" className="w-full h-full object-contain" />
+      </button>
+    </div> */}
     <div className="fixed z-50 bottom-6 right-20">
-      <button className="w-12 aspect-square rounded-full p-2 bg-white cursor-pointer border hover:scale-105">Logo</button>
-    </div>
+      
+  <button className="relative w-12 aspect-square rounded-full p-2 cursor-pointer hover:scale-115 transition-transform duration-200 overflow-hidden bg-black group">
+    {/* Spark Border Effect */}
+    <span className="absolute inset-0 rounded-full overflow-hidden mask-gradient animate-flip z-0">
+      <span className="spark-inner"></span>
+    </span>
+
+    {/* Backdrop */}
+    <span className="absolute inset-[1px] rounded-full bg-black transition-colors duration-200 group-hover:bg-zinc-900 z-10" />
+
+    {/* Logo */}
+    <img
+      src="../../public/logos/RafayLogo.PNG"
+      alt="Logo"
+      className="relative z-20 w-full h-full object-contain"
+    />
+  </button>
+</div>
+
       
       <div className="snap-y snap-mandatory overflow-y-scroll h-screen">
         <HeroSection/>

@@ -60,3 +60,45 @@
 .animate-bounceSlow {
   animation: bounceSlow 3s ease-in-out infinite;
 }
+
+
+
+
+
+@layer utilities {
+  .mask-gradient {
+    mask-image: linear-gradient(white, transparent 50%);
+    -webkit-mask-image: linear-gradient(white, transparent 50%);
+  }
+
+  .animate-flip {
+    animation: flip 6s infinite steps(2, end);
+  }
+}
+
+@keyframes flip {
+  to {
+    rotate: 360deg;
+  }
+}
+
+.spark-inner {
+  content: "";
+  position: absolute;
+  width: 200%;
+  aspect-ratio: 1 / 1;
+  left: 50%;
+  top: 0;
+  translate: -50% -15%;
+  transform: rotate(-90deg);
+  z-index: -1;
+  background: conic-gradient(from 0deg, transparent 0 340deg, white 360deg);
+  animation: spin-spark 3s linear infinite;
+  opacity: 1;
+}
+
+@keyframes spin-spark {
+  to {
+    transform: rotate(90deg);
+  }
+}
