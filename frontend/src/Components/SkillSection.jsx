@@ -5,7 +5,7 @@ function SkillSection() {
   return (
     <div>
       <section
-              id="hero"
+              id="skills"
               className="relative snap-start h-screen flex items-center justify-center px-4"
               
             >

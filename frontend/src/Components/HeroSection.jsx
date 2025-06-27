@@ -3,7 +3,7 @@ function HeroSection() {
 
   return (
     <div>
-      <section className="snap-start h-screen w-full flex items-start justify-start px-40 pt-40 ">
+      <section id="hero" className="  snap-start h-screen w-full flex items-start justify-start px-40 pt-40 ">
         <div className="text-white  max-w-5xl p-5 ">
           
           <div className="flex space-x-6 items-start ">

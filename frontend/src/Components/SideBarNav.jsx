@@ -22,10 +22,10 @@ function SideBarNav({isOpen, toggleSideBar}) {
             <h2 className='text-sm'></h2>
 
             <ul className='space-y-20'>
-                <li><a href=""><ImProfile /></a></li>
-                <li><a href=""><GrProjects /></a></li>
-                <li><a href=""><BsFillRocketTakeoffFill /></a></li>
-                <li><a href=""><MdOutlineAttachEmail /></a></li>
+                <li><a href="#hero" ><ImProfile /></a></li>
+                <li><a href="#project"><GrProjects /></a></li>
+                <li><a href="#skills"><BsFillRocketTakeoffFill /></a></li>
+                <li><a href="#contact"><MdOutlineAttachEmail /></a></li>
             </ul>
         </div>
     </div>
