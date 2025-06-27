@@ -3,18 +3,18 @@ function HeroSection() {
 
   return (
     <div>
-      <section className="snap-start h-screen w-full flex items-start justify-start px-30 pt-30">
-        <div className="text-white max-w-3xl">
+      <section className="snap-start h-screen w-full flex items-start justify-start px-40 pt-40 ">
+        <div className="text-white  max-w-5xl p-5 ">
           
-          <div className="flex space-x-6 items-start">
+          <div className="flex space-x-6 items-start ">
             <img src="../../public/logos/profile.jpg" alt="" className="w-20 h-20 rounded-full object-cover border-2 border-white  shadow-md object-center "/>
             
             <div className=" ">
-              <h1 className="">A.RAFAY KHAN</h1>
+              <h1 className="font-bold">A.RAFAY KHAN</h1>
               <p>I am just a guy who is a vlogger, developer, designer, and DevOps engineer for fun.</p>
             </div>
 
-            
+          
           </div>
           
           <p className="mt-6 text-sm text-gray-300 leading-relaxed">
