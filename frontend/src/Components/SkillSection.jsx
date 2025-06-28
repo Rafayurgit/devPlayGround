@@ -124,9 +124,10 @@ function SkillSection() {
                     <div key={idx}>
                       
                       <div className='flex p-3'>
+                        <img src={cert.icon} alt="" className='w-5 h-5 ml-3'/>
+
                         <li>{cert.title}</li>
                         <p>{cert.year}</p>
-                        <img src={cert.icon} alt="" className='w-5 h-5 ml-3'/>
                       </div>
                     </div>
                   ))}

@@ -4,6 +4,7 @@ import HeroSection from "../Components/HeroSection";
 import ProjectSection from "../Components/ProjectSection";
 import SkillSection from "../Components/SkillSection";
 import SideBarNav from "../Components/SideBarNav";
+import ContactMe from "../Components/ContactMe";
 import { useState } from "react";
 
 const Home = () => {
@@ -53,8 +54,10 @@ const Home = () => {
       
       <div className="snap-y snap-mandatory overflow-y-scroll h-screen z-0">
         <HeroSection/>
-        <ProjectSection/>
         <SkillSection/>
+        <ProjectSection/>
+        <ContactMe/>
+        
       </div>
 
     </div>

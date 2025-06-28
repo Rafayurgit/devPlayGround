@@ -11,7 +11,7 @@ function SideBarNav({isOpen, toggleSideBar}) {
   return (
     <>
     {/* {isOpen ? <div
-          className="fixed inset-0 bg-black bg-opacity-50 z-40"
+          className="fixed inset-0 bg-black bg-opacity-0 z-40"
           onClick={toggleSideBar}
         ></div>: null } */}
 
@@ -23,8 +23,8 @@ function SideBarNav({isOpen, toggleSideBar}) {
 
             <ul className='space-y-20'>
                 <li><a href="#hero" ><ImProfile /></a></li>
-                <li><a href="#project"><GrProjects /></a></li>
                 <li><a href="#skills"><BsFillRocketTakeoffFill /></a></li>
+                <li><a href="#project"><GrProjects /></a></li>
                 <li><a href="#contact"><MdOutlineAttachEmail /></a></li>
             </ul>
         </div>
