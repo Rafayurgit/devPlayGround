@@ -2,6 +2,22 @@ import React from 'react'
 import ProjectCard from './ProjectCard'
 import projectList from '../DATA/projectList'
 
+const clonedProjects = [
+  {
+    title: "Netflix Clone",
+    image: "/images/netflix.png",
+    link: "https://your-netflix-clone-url",
+    tech: "React, Firebase",
+  },
+  {
+    title: "Spotify UI Clone",
+    image: "/images/spotify.png",
+    link: "https://your-spotify-clone-url",
+    tech: "HTML, CSS, JS",
+  },
+  // Add more...
+];
+
 function ProjectSection() {
   return (
     <div>
@@ -12,6 +28,11 @@ function ProjectSection() {
             {projectList.map((proj, idx)=>{
               return <ProjectCard key={idx} project={proj}/>
             })}
+          </div>
+
+          <div>
+            <h1 className="text-2xl font-semibold text-white m-3">🧪 Cloned Websites</h1>
+        
           </div>
         </div>
       </section>

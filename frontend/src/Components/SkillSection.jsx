@@ -8,8 +8,11 @@ const skills = [
   { name: "C++", level: 70 },
   { name: "React", level: 80 },
   { name: "Python", level: 60 },
+  { name: "Cloud Computing", level: 70 },
+
   { name: "Communication", level: 88 },
   { name: "Project Management", level: 75 },
+  
 ];
 
 const languages=[

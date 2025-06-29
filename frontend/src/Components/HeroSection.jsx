@@ -26,7 +26,9 @@ function HeroSection() {
           </p>
 
           <div className="mt-8">
-          <button className="bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition">Lets Connect</button>
+            <a href="#contact">
+              <button className="bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">Lets Connect</button>
+            </a>
           </div>
 
 
