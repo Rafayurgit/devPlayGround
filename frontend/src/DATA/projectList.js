@@ -7,6 +7,18 @@ import PollMasterIndex from "../Projects/PollMaster/PollMasterIndex.jsx";
 
 const projectList = [
   {
+    name: "TextMIya",
+    path: "https://rafayurgit.github.io/TextMiya/",
+    // component: TextMiya,
+    description: "Text utility app with dark mode",
+  },
+  {
+      name:"Bubble Game",
+      path:"https://github.com/Rafayurgit/BubbleGameJS",
+      // component: Notes,
+      description: "This is an mini fun game of bubbles i created using HTML,CSS & JS, its a mini and fun game."
+  },
+  {
     name: "Calculator",
     path: "/project/calculator",
     component: Calculator,

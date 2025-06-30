@@ -1,46 +1,31 @@
-import Calculator from "../Projects/Calculator/Calculator.jsx";
-import Notes from "../Projects/NotesApp/Notes.jsx";
-import Todo from "../Projects/ToDo/Todo.jsx";
-import Weather from "../Projects/WeatherApp/Weather.jsx";
+
 import Analytics from "../Projects/CricketAnalytics/Analytics.jsx";
 import PollMasterIndex from "../Projects/PollMaster/PollMasterIndex.jsx";
 
 const projectList = [
   {
-    name: "Calculator",
-    path: "/project/calculator",
-    component: Calculator,
-    description: "Basic calculator built with hooks",
-  },
-  {
-    name:"Todo",
-    path:"/project/todo",
-    component: Todo,
-    description:"Simple todo list with add/remove functionality"
+    name:"Magma clone",
+    path:"https://rafayurgit.github.io/MagmaClone/",
+    // component: Todo,
+    description:"This is a clone of an award winning website which was featured in the Awwward website"
   }, 
   {
-    name:"WeatherApp",
-    path:"/project/weatherApp",
-    component: Weather,
-    description: "Check your city's weather"
+    name:"SideCup clone",
+    path:"https://github.com/Rafayurgit/SidecupClone",
+    // component: Weather,
+    description: "This is a cloned website of Sidecup Website"
   },
   {
-    name:"NoteApp",
-    path:"/project/NoteApp",
-    component: Notes,
-    description: "A fully note app"
-  },
-  {
-    name:"CricketAnalytics",
-    path:"/project/analytics",
+    name:"Youtube Clone",
+    path:"https://github.com/Rafayurgit/YouTube-Clone",
     component: Analytics,
-    description:"Check the status of your fav match"
+    description:"This is a complete backend project, tried to clone youtube ."
   },
   {
-    name: "Poll Master",
-    path: "/project/pollmaster/*",
+    name: "Byte Burger",
+    path: "https://github.com/Rafayurgit/byteburger",
     component: PollMasterIndex,
-    description: "Create, vote and view polls"
+    description: "This is a buyteBurger website using MERN"
   }
 ];
 

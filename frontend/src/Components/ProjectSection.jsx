@@ -16,11 +16,7 @@ function ProjectSection() {
             })}
           </div>
 
-          <div>
-            <h1 className="text-2xl font-semibold text-white m-3">🧪 Cloned Websites</h1>
-            <CardCarousel/>
-        
-          </div>
+          
         </div>
       </section>
     </div>

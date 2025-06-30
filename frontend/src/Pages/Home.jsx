@@ -5,12 +5,15 @@ import ProjectSection from "../Components/ProjectSection";
 import SkillSection from "../Components/SkillSection";
 import SideBarNav from "../Components/SideBarNav";
 import ContactMe from "../Components/ContactMe";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import CardCarousel from "../Components/CardCarousel";
 
 const Home = () => {
 
   const [isSideBarOpen, setSideBarOpen]= useState(false);
   const toggleSideBar=()=> setSideBarOpen(prev => !prev);
+
+ 
 
   return (
     <div className="relative min-h-screen">
@@ -50,12 +53,14 @@ const Home = () => {
   </button>
 </div>
 
+
       <SideBarNav isOpen={isSideBarOpen} toggleSideBar={toggleSideBar} />
       
       <div className="snap-y snap-mandatory overflow-y-scroll h-screen z-0">
         <HeroSection/>
         <SkillSection/>
         <ProjectSection/>
+        <CardCarousel/>
         <ContactMe/>
         
       </div>
