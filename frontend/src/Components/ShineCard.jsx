@@ -26,7 +26,7 @@ export default function ShineCard({ project }) {
       {project.image && (
         <div className="relative w-full h-40 mb-4 rounded-md overflow-hidden bg-neutral-800">
           <img
-            src={project.image}
+            src={``}
             alt={project.name}
             className="absolute inset-0 w-full h-full object-cover"
             loading="lazy"

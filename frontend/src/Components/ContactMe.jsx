@@ -22,7 +22,7 @@ const myProfiles=[
 
 function ContactMe() {
   return (
-    <div id='contact' className='text-white snap-start h-screen w-full flex items-start justify-center px-50 pt-30'>
+    <div id='contact' className='text-white snap-start min-h-screen w-full flex items-start justify-center px-4 md:px-20 pt-20'>
 
         <div className='flex flex-col justify-center items-center p-5 space-y-5'>
             <p>Lets connect through these platform or you can directly mail me on <span className='text-blue-300'>rafaykhanpvt@gmail.com</span> </p>
@@ -42,7 +42,7 @@ function ContactMe() {
                 ))}
             </div>
 
-            <div className='w-50 h-70 justify-center items-center rounded-xl bg-slate-800 flex flex-col p-6 shadow-md space-y-4'>
+            <div className='max-w-xl h-70 justify-center items-center rounded-xl bg-slate-800 flex flex-col p-6 shadow-md space-y-4'>
                 <input type="text" className='border w-full rounded' />
                 <textarea name="" id="" rows={5} className='border w-full rounded'></textarea>
                 <button className='bg-slate-900 rounded w-15 h-10 hover:bg-slate-700 cursor-pointer p-1'>Send</button>

@@ -3,15 +3,15 @@ function HeroSection() {
 
   return (
     <div>
-      <section id="hero" className="  snap-start h-screen w-full flex items-start justify-start px-55 pt-30 ">
+      <section id="hero" className="  snap-start min-h-screen w-full flex flex-col md:flex-row items-start justify-start px-4 md:px-60 pt-10 md:pt-30  gap-6">
         <div className="text-white  max-w-5xl p-5 ">
           
           <div className="flex space-x-6 items-start ">
-            <img src="../../public/logos/profile.jpg" alt="" className="w-20 h-20 rounded-full object-cover border-2 border-white  shadow-md object-center "/>
+            <img src="../../public/logos/profile2.png"  loading="lazy" alt="profileImg" className="w-20 h-20 sm:w-24 sm:h-24  rounded-full object-cover border-2 border-white  shadow-md  "/>
             
             <div className=" ">
-              <h1 className="font-bold">A.RAFAY KHAN</h1>
-              <p>I am just a guy who is a vlogger, developer, designer, and DevOps engineer for fun.</p>
+              <h1 className="font-merri ">A.RAFAY KHAN</h1>
+              <p className="font-mont">I am just a guy who is a vlogger, developer, designer, and DevOps engineer for fun.</p>
             </div>
 
           
@@ -27,7 +27,7 @@ function HeroSection() {
 
           <div className="mt-8">
             <a href="#contact">
-              <button className="bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">Lets Connect</button>
+              <button className="font-merri bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">Lets Connect</button>
             </a>
           </div>
 

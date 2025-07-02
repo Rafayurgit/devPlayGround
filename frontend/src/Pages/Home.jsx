@@ -18,14 +18,6 @@ const Home = () => {
   return (
     <div className="relative min-h-screen">
 
-    <div className="fixed z-50 bottom-6 left-15">
-      <h1 className="text-white font-mont text-xlg">A.RAFAY KHAN</h1>
-    </div>
-
-    <div className="fixed left-56 bottom-6">
-      <h3 className="text-white font-merri">I am just a guy who is designer and developer for fun.</h3>
-    </div>
-
     {/* <div className="fixed z-50 bottom-6 right-20">
       <button className=" w-12 aspect-square rounded-full p-2 cursor-pointer hover:scale-115">
         <img src="../../public/logos/RafayLogo.PNG" alt="Logo" className="w-full h-full object-contain" />

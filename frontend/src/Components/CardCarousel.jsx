@@ -63,7 +63,7 @@ export default function CardCarousel() {
         
     // </div>
 
-     <div className="snap-start h-screen flex items-center justify-center px-4">
+     <div className="snap-start h-screen flex items-center justify-center px-4 min-w-[250px]">
       <div className="w-full max-w-5xl h-[80vh] border border-white/10 rounded-xl backdrop-blur-md shadow-lg p-10 flex flex-col items-center justify-center">
         <div className="relative w-full overflow-hidden">
           <div
