@@ -23,7 +23,7 @@ const Home = () => {
         <img src="../../public/logos/RafayLogo.PNG" alt="Logo" className="w-full h-full object-contain" />
       </button>
     </div> */}
-    <div className="fixed z-70 bottom-6 right-20">
+    <div className="fixed z-70 bottom-6 right-6 sm:right-20 ">
       
   <button 
   onClick={toggleSideBar}

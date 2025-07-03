@@ -25,9 +25,21 @@ function HeroSection() {
               Beyond the tech world, I’m passionate about traveling. I enjoy capturing moments through photography and videography, and in my free time, I love editing both photos and videos as a creative outlet.
           </p>
 
-          <div className="mt-8">
-            <a href="#contact">
-              <button className="font-merri bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">Lets Connect</button>
+          <div className="flex mt-8">
+            <a href="#contact" className="ml-auto">
+              {/* <button className="font-merri bg-white text-black px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">Lets Connect</button> */}
+              <button 
+                className="relative font-merri  border text-white px-6 py-2 rounded-full font-semibold shadow-md hover:bg-gray-200 transition cursor-pointer">
+                  {/* Spark Border Effect */}
+                  
+                  <span className="absolute inset-0 rounded-full overflow-hidden mask-gradient animate-flip z-0">
+                    <span className="spark-inner"></span>
+                  </span>
+
+                  {/* Backdrop */}
+                  <span className="absolute inset-[1px] rounded-full bg-black transition-colors duration-200 group-hover:bg-zinc-900 z-10" />
+                <span className="relative z-20">Let's Connect</span>
+              </button>
             </a>
           </div>
 

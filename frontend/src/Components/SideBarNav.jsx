@@ -16,7 +16,7 @@ function SideBarNav({isOpen, toggleSideBar}) {
         ></div>: null } */}
 
 
-        <div className={` z-50 fixed bottom-5 right-18.5 h-160 w-15 rounded-4xl justify-center items-center backdrop-blur-2xl shadow-lg bg-slate-900 text-xl text-white transform transition-transform duration-300 
+        <div className={` z-50 fixed bottom-5 right-20 sm:right-18.5 h-160 w-15 rounded-4xl justify-center items-center backdrop-blur-2xl shadow-lg bg-slate-900 text-xl text-white transform transition-transform duration-300 
             ${isOpen ? "translate-y-0" : "translate-y-full"}`} >
         <div className='p-5 space-y-30'>
             <h2 className='text-sm'></h2>
